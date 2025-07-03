@@ -140,13 +140,13 @@
         </tr>
       </thead>
       <tbody id="studentViewBody">
-        <!-- generateStudentView จะเติมข้อมูลตรงนี้ -->
+      
       </tbody>
     </table>
     <button onclick="toggleStudentView()">🔙 ย้อนกลับ</button>
   </div>
 
-  <!-- ✅ ย้าย script มาต่อท้าย -->
+  
   <script>
     let subjects = [];
     let calendar;
@@ -276,15 +276,18 @@
       calendar.render();
     }
 
-    function formatDate(input) {
-      const date = new Date(input);
-      const days = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
-      const months = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
-        'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
-      return `${days[date.getDay()]} - ${months[date.getMonth()]} - ${date.getFullYear()}`;
-    }
+   function formatDate(input) {
+  const date = new Date(input);
+  const days = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+  const months = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
+    'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+  
+  const thaiText = `${days[date.getDay()]} - ${months[date.getMonth()]} - ${date.getFullYear()}`;
+  const numberDate = `(${date.getDate().toString().padStart(2, '0')}/${(date.getMonth()+1).toString().padStart(2, '0')}/${date.getFullYear()})`;
+  return `${thaiText} ${numberDate}`;
+}
 
-   function generateStudentView() {
+    function generateStudentView() {
   const body = document.getElementById('studentViewBody');
   body.innerHTML = '';
 
@@ -329,4 +332,6 @@ function toggleStudentView() {
   </script>
 </body>
 </html>
+
+
 
